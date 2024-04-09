@@ -1,0 +1,7 @@
+@import '../variables/color.scss';
+
+body {
+    background-color: var(--main-white);
+    color: var(--main-black);
+    font-family: "Open Sans", sans-serif;
+}

@@ -1,0 +1,32 @@
+@import "../../style/variables/color.scss";
+
+.navbar {
+  background-color: var(--main-black);
+  padding: 8px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.navbar__list {
+  align-self: center;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+
+  &_link {
+    color: var(--main-grey);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 19.2px;
+    transition: all 0.3s linear;
+
+    &:hover {
+      color: var(--main-green);
+    }
+  }
+}
+
+.link-active {
+    color: var(--main-green);
+}
