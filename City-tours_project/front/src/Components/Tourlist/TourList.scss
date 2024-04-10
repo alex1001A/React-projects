@@ -1,0 +1,31 @@
+@import '../../style/variables/color.scss';
+
+.tourlist {
+    width: 70vw;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+@media (min-width:768px) {
+    .tourlist {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 1.5rem;
+    }
+}
+
+@media (min-width:992px) {
+    .tourlist {
+        width: 85vw;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width:1140px) {
+    .tourlist {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+
