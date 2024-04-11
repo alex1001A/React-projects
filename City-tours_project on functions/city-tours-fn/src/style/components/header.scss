@@ -1,0 +1,16 @@
+.header {
+
+    background-color: var(--add-dark-blue);
+    margin-bottom: 40px;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        cursor: pointer;
+        width: 150px;
+    }
+}

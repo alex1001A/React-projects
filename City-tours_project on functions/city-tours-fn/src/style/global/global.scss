@@ -1,0 +1,12 @@
+@import '../variables/colors.scss';
+
+body {
+    font-family: "Montserrat", sans-serif;
+    color: var(--main-black);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
