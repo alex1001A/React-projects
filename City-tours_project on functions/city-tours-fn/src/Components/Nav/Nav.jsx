@@ -1,3 +1,6 @@
+// React hooks
+import {Link} from 'react-router-dom'
+
 //Styles
 import '../../style/components/nav.scss'
 
@@ -6,13 +9,13 @@ export default function Nav() {
     <nav className="navigation">
       <ul className="nav-list">
         <li>
-          <a className="nav-list__link" href="">Home</a>
+          <Link className="nav-list__link" to="/">Home</Link>
         </li>
         <li>
-          <a className="nav-list__link" href="">About</a>
+          <Link className="nav-list__link" to="/about">About</Link>
         </li>
         <li>
-          <a className="nav-list__link" href="">Tours</a>
+          <Link className="nav-list__link" to="/Tours">Tours</Link>
         </li>
       </ul>
     </nav>

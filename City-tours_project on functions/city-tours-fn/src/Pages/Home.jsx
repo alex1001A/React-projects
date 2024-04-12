@@ -1,13 +1,17 @@
-//Component
-import { tourData } from "../data/tourData";
-import SingleTour from "../Components/SingleTour/SingleTour";
+// React hooks
+
+
+//Components
+import Slider from "../Components/Slider/Slider";
+
+//Styles
 
 export default function Home() {
   return (
-    <section>
-      {tourData.map((item) => (
-        <SingleTour key={item.id} props={item} />
-      ))}
-    </section>
+    <>
+      <section className="hero">
+        <Slider/>
+      </section>
+    </>
   );
 }

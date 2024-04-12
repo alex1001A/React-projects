@@ -1,4 +1,4 @@
-// import React from 'react'
+// React hooks
 
 // Components
 import logo from '../../img/logo.jpg'
