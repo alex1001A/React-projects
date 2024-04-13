@@ -1,10 +1,5 @@
-@import '../variables/spacings.scss';
-
-.tours {
-
-    &__container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
+.hero {
+    padding: 30px 100px;
+    background-color: var(--add-light-blue);
+    color: var(--add-dark-blue);
 }

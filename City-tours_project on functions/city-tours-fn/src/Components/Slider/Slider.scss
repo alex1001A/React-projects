@@ -1,5 +1,24 @@
-.slider-wrapper {
-    background-color: blueviolet;
+.hero-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+
+    &__title {
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+
+    &__desc {
+        font-size: 20px;
+        line-height: 1.4;
+        max-width: 6500px;
+
+        &_italic {
+            font-style: italic;
+            font-size: 22px;
+            font-weight: 800;
+        }
+    }
 }
