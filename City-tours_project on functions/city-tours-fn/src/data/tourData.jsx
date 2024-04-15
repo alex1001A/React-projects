@@ -1,6 +1,8 @@
 export const tourData = [
   {
     id: 1,
+    country: 'France',
+    continent: 'EU',
     city: "Paris",
     img: "./img/cities/paris.jpeg",
     name: "Paris City Tour",
@@ -8,6 +10,8 @@ export const tourData = [
   },
   {
     id: 2,
+    country: 'USA',
+    continent: 'NA',
     city: "New York",
     img: "./img/cities/new_york.jpeg",
     name: "New York Explorer",
@@ -15,6 +19,8 @@ export const tourData = [
   },
   {
     id: 3,
+    country: 'England',
+    continent: 'EU',
     city: "London",
     img: "./img/cities/london.jpeg",
     name: "London Royal Palace Tour",
@@ -22,6 +28,8 @@ export const tourData = [
   },
   {
     id: 4,
+    country: 'Japan',
+    continent: 'Asia',
     city: "Tokyo",
     img: "./img/cities/tokyo.jpeg",
     name: "Tokyo Highlights Tour",
@@ -29,6 +37,8 @@ export const tourData = [
   },
   {
     id: 5,
+    country: 'Italy',
+    continent: 'EU',
     city: "Rome",
     img: "./img/cities/rome.jpeg",
     name: "Rome Ancient Tour",
@@ -36,6 +46,8 @@ export const tourData = [
   },
   {
     id: 6,
+    country: 'Australia',
+    continent: 'AU',
     city: "Sydney",
     img: "./img/cities/sydney.jpeg",
     name: "Sydney Harbor Cruise",
@@ -43,6 +55,8 @@ export const tourData = [
   },
   {
     id: 7,
+    country: 'Turkey',
+    continent: 'Asia',
     city: "Istanbul",
     img: "./img/cities/istanbul.jpeg",
     name: "Istanbul Cultural Tour",
@@ -50,6 +64,8 @@ export const tourData = [
   },
   {
     id: 8,
+    country: 'Brasil',
+    continent: 'SA',
     city: "Rio de Janeiro",
     img: "./img/cities/rio.jpeg",
     name: "Rio de Janeiro Beach Adventure",
@@ -57,6 +73,8 @@ export const tourData = [
   },
   {
     id: 9,
+    country: 'SAR',
+    continent: 'AF',
     city: "Cape Town",
     img: "./img/cities/cape_town.jpeg",
     name: "Cape Town Safari Experience",
@@ -64,6 +82,8 @@ export const tourData = [
   },
   {
     id: 10,
+    country: 'Japan',
+    continent: 'Asia',
     city: "Kyoto",
     img: "./img/cities/kyoto.jpeg",
     name: "Kyoto Temples Tour",
@@ -71,6 +91,8 @@ export const tourData = [
   },
   {
     id: 11,
+    country: 'Spain',
+    continent: 'EU',
     city: "Barcelona",
     img: "./img/cities/barcelona.jpeg",
     name: "Barcelona Gaudi Tour",
@@ -78,6 +100,8 @@ export const tourData = [
   },
   {
     id: 12,
+    country: 'UAE',
+    continent: 'Asia',
     city: "Dubai",
     img: "./img/cities/dubai.jpeg",
     name: "Dubai Desert Safari",
@@ -85,6 +109,8 @@ export const tourData = [
   },
   {
     id: 13,
+    country: 'Italy',
+    continent: 'EU',
     city: "Florence",
     img: "./img/cities/florence.jpeg",
     name: "Florence Art Tour",
@@ -92,6 +118,8 @@ export const tourData = [
   },
   {
     id: 14,
+    country: 'Netherlands',
+    continent: 'EU',
     city: "Amsterdam",
     img: "./img/cities/amsterdam.jpeg",
     name: "Amsterdam Canal Cruise",
@@ -99,6 +127,8 @@ export const tourData = [
   },
   {
     id: 15,
+    country: 'Italy',
+    continent: 'EU',
     city: "Venice",
     img: "./img/cities/venice.jpeg",
     name: "Venice Gondola Ride",
@@ -106,6 +136,8 @@ export const tourData = [
   },
   {
     id: 16,
+    country: 'Czech republic',
+    continent: 'EU',
     city: "Prague",
     img: "./img/cities/prague.jpeg",
     name: "Prague Castle Tour",
@@ -113,6 +145,8 @@ export const tourData = [
   },
   {
     id: 17,
+    country: 'China',
+    continent: 'Asia',
     city: "Hong Kong",
     img: "./img/cities/hong_kong.jpeg",
     name: "Hong Kong City Skyline Tour",
@@ -120,6 +154,8 @@ export const tourData = [
   },
   {
     id: 18,
+    country: 'Argentina',
+    continent: 'SA',
     city: "Buenos Aires",
     img: "./img/cities/buenos_aires.jpeg",
     name: "Buenos Aires Tango Experience",
@@ -127,6 +163,8 @@ export const tourData = [
   },
   {
     id: 19,
+    country: 'Marocco',
+    continent: 'AF',
     city: "Marrakech",
     img: "./img/cities/marrakech.jpeg",
     name: "Marrakech Medina Tour",
@@ -134,6 +172,8 @@ export const tourData = [
   },
   {
     id: 20,
+    country: 'South Korea',
+    continent: 'Asia',
     city: "Seoul",
     img: "./img/cities/seoul.jpeg",
     name: "Seoul Palace Tour",
