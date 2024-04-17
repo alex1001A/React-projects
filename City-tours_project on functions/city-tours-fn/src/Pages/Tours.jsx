@@ -6,23 +6,28 @@ import { useState, useRef } from "react";
 //Styles
 import "../style/pages/tours-page.scss";
 
-const continents = [tourData.map((item) => item.continent)];
-const uniqueContinents = [...new Set(continents[0])];
+function getUniqueValues(data, property) {
+  const values = data.map((item) => item[property]);
+  const uniqueValues = [...new Set(values)];
+  return uniqueValues;
+}
 
 export default function Tours() {
   let searchInp = useRef(null);
   let [data, setData] = useState(tourData);
-  let optionRef = useRef(null)
+  let continentOptionRer = useRef(null);
 
-  
-  function selectedOptionValue() {
-    
-    console.log(optionRef.current.value);
+  function sortContinentsByFilter() {
+    const continentOption = continentOptionRer.current.value;
+    const varToSortByContinent = tourData.filter(
+      (item) => item.continent.toLocaleLowerCase() === continentOption
+    );
+    setData(varToSortByContinent);
   }
 
   function handleSearch() {
     const inputValue = searchInp.current.value.toLowerCase();
-    const filteredData = tourData.filter((item) =>
+    const filteredData = data.filter((item) =>
       item.city.toLowerCase().includes(inputValue)
     );
     setData(filteredData);
@@ -39,8 +44,12 @@ export default function Tours() {
             onKeyUp={handleSearch}
             placeholder="Type city you want..."
           />
-          <select onChange={selectedOptionValue} ref={optionRef} className="hero-tours__search-select">
-            {uniqueContinents.map((item) => (
+          <select
+            onChange={sortContinentsByFilter}
+            ref={continentOptionRer}
+            className="hero-tours__search-select"
+          >
+            {getUniqueValues(tourData, "continent").map((item) => (
               <option key={item.id} value={item.toLocaleLowerCase()}>
                 {item}
               </option>

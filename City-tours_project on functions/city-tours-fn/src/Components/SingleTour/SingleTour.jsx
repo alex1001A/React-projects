@@ -1,7 +1,10 @@
 import { useState } from "react";
+
+
 import "../../style/components/tour-card.scss";
 
 export default function SingleTour({ props }) {
+  
   let [info, setInfo] = useState(false);
 
   function handleInfo() {
@@ -12,6 +15,10 @@ export default function SingleTour({ props }) {
     let randomNum = Math.random()
     const tourPrice = randomNum * (1000 - 200) + 200
     return Math.round(tourPrice)
+  }
+
+  function addToCart() {
+    console.log('This is cart');
   }
 
   return (

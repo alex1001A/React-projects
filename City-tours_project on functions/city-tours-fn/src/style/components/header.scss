@@ -7,6 +7,31 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .cart {
+            width: 50px;
+            height: 50px;
+            background-color: var(--add-light-blue);
+            border-radius: 50%;
+            position: relative;
+
+            &__icon {
+                font-size: 22px;
+                position: relative;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+            }
+
+            &__count {
+                font-size: 14px;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
+                position: absolute;
+                top: -10px;
+                right: -8px;
+            }
+        }
     }
 
     &__logo {
