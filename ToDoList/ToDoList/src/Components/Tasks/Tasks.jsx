@@ -2,7 +2,7 @@ import Task from '../Task/Task'
 
 import s from './Tasks.module.css'
 
-export default function Tasks({tasks, onComplete}) {
+export default function Tasks({tasks, onComplete, onDelete}) {
 
 const tasksQuantity = tasks.length
 const copletedTasks = tasks.filter(task => task.isCompleted).length
@@ -22,7 +22,7 @@ const copletedTasks = tasks.filter(task => task.isCompleted).length
 
       <div className={s.list}>
         {tasks.map(task => (
-        <Task key={task.id} task={task} onComplete={onComplete}/>
+        <Task key={task.id} task={task} onComplete={onComplete} onDelete={onDelete}/>
         ))}
       </div>
     </section>

@@ -1,15 +1,32 @@
 import Header from "./Components/Header/Header";
 import Tasks from "./Components/Tasks/Tasks";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const LOCAL_STORAGE_KEY = 'todo:savedtasks'
 
 export default function App() {
 
-
 const [tasks, setTasks] = useState([])
 
+function getSavedTasks(newTasks) {
+  const saved = localStorage.getItem(LOCAL_STORAGE_KEY)
+  if (saved) {
+    setTasks(JSON.parse(saved))
+  }
+}
+
+useEffect(() => {
+  getSavedTasks()
+}, [])
+
+function setTasksAndSave(newTasks) {
+  setTasks(newTasks)
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks))
+}
+
 function addTask(taskTitle) {
-  setTasks([
+  setTasksAndSave([
     ...tasks, 
     {
       id: crypto.randomUUID(),
@@ -29,7 +46,12 @@ function toggleTaskCompletedById(taskId) {
     }
     return task
   })
-  setTasks(newTasks)
+  setTasksAndSave(newTasks)
+}
+
+function deleteTaskById(taskId) {
+  const newTasks = tasks.filter(task => task.id !== taskId)
+  setTasksAndSave(newTasks)
 }
 
   return (
@@ -37,6 +59,7 @@ function toggleTaskCompletedById(taskId) {
       <Header onAddTask={addTask}/>
       <Tasks
       tasks={tasks}
+      onDelete = {deleteTaskById}
       onComplete={toggleTaskCompletedById}
       />
     </>
