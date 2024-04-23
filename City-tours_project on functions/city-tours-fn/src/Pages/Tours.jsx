@@ -12,9 +12,16 @@ export default function Tours() {
   const [data] = useState(tourData);
   const [tours, setTours] = useState(data);
 
+  const [cart, setCart] = useState([]);
+
   const inpRef = useRef(null);
   const optionsOfContinents = useRef(null);
 
+  const addToCart = (name, price) => {
+    setCart(prevCart => [...prevCart, { name, price }]);
+  };
+  console.log(cart);
+  
   function getSearchedTours() {
     const searchInput = inpRef.current.value.toLowerCase();
 
@@ -28,14 +35,10 @@ export default function Tours() {
     }
   }
 
-  function getFilteredByContinentTours() {
-    const continentsOption = optionsOfContinents.current.value;
-    const toursByContinents = data.filter((item) => {
-      if (item.continent === continentsOption) {
-        return item
-      }
-      setTours(toursByContinents);
-    });
+  const getFilteredByContinentTours = () => {
+    const value = optionsOfContinents.current.value;
+    const array = data.filter(item => item.continent === value)
+    setTours(array)
   }
 
   function getUniqueValues(data, value) {
@@ -54,19 +57,20 @@ export default function Tours() {
             placeholder="type your favourite city..."
             onKeyUp={getSearchedTours}
           />
-          <select ref={optionsOfContinents} onChange={getFilteredByContinentTours()}>
+          <select ref={optionsOfContinents} >
             {getUniqueValues(data, "continent").map((continent) => (
-              <option ref={optionsOfContinents} value={continent}>
+              <option key={continent} value={continent}>
                 {continent}
               </option>
             ))}
           </select>
+          <button onClick={getFilteredByContinentTours}>Filter</button>
         </div>
       </section>
       <section className="tours">
         <div className="container tours__container">
           {tours.map((tour) => (
-            <Tour key={tour.id} tour={tour} setTours={setTours} tours={tours} />
+            <Tour key={tour.id} tour={tour} setTours={setTours} tours={tours} addToCart={addToCart}/>
           ))}
         </div>
       </section>
