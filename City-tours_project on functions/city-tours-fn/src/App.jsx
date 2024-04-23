@@ -15,6 +15,8 @@ export default function App() {
 
   const [tours, setTours] = useState(tourData);
 
+  console.log(tours, 'App');
+
   return (
     <div className="wrapper">
       <Header />

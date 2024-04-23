@@ -13,17 +13,23 @@ export default function Tours({ tours, setTours }) {
 
   function getSearchedTours() {
       const searchInput = inpRef.current.value.toLowerCase();
-      const searchedTours = tours.filter(tour => tour.city.toLowerCase() === searchInput);
-      setTours(searchedTours);
-      console.log(searchedTours);
+      const fullArr = tours
+      if (searchInput === '') {
+        setTours(fullArr);
+        console.log(fullArr, 'Tours - Empty inp');
+      } else {
+         const searchedTours = tours.filter(tour => tour.city.toLowerCase().includes(searchInput));
+         setTours(searchedTours);
+         console.log(searchedTours, 'Tours - Not empty inp');
+
+       }
   }
 
   return (
     <>
       <section className="hero-tours">
         <div className="container hero-tours__container">
-          <input ref={inpRef} type="text" placeholder="type your favourite city..."/>
-          <button onClick={getSearchedTours}>Поиск</button>
+          <input ref={inpRef} type="text" placeholder="type your favourite city..." onChange={getSearchedTours}/>
         </div>
       </section>
       <section className="tours">
