@@ -29,19 +29,14 @@ export default function Tours() {
   }
 
   function getFilteredByContinentTours() {
-    const continentsOption = optionsOfContinents.current.value.toUpperCase();
-    console.log(continentsOption);
-    //   if (searchInput === "") {
-    //     setTours(data);
-    //   } else {
-    //     const searchedTours = data.filter((tour) =>
-    //       tour.city.toLowerCase().includes(searchInput)
-    //     );
-    //     setTours(searchedTours);
-    //   }
+    const continentsOption = optionsOfContinents.current.value;
+    const toursByContinents = data.filter((item) => {
+      if (item.continent === continentsOption) {
+        return item
+      }
+      setTours(toursByContinents);
+    });
   }
-
-  getFilteredByContinentTours();
 
   function getUniqueValues(data, value) {
     const uniqueValue = data.map((obj) => obj[value]);
@@ -59,7 +54,7 @@ export default function Tours() {
             placeholder="type your favourite city..."
             onKeyUp={getSearchedTours}
           />
-          <select>
+          <select ref={optionsOfContinents} onChange={getFilteredByContinentTours()}>
             {getUniqueValues(data, "continent").map((continent) => (
               <option ref={optionsOfContinents} value={continent}>
                 {continent}
