@@ -1,40 +1,76 @@
 //React components/hooks
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 //Component
 import Tour from "../Components/Tour/Tour";
+import { tourData } from "../data/tourData";
 
 //Styles
 import "../style/pages/tours-page.scss";
 
-export default function Tours({ tours, setTours }) {
+export default function Tours() {
+  const [data] = useState(tourData);
+  const [tours, setTours] = useState(data);
 
-  const inpRef = useRef(null)
+  const inpRef = useRef(null);
+  const optionsOfContinents = useRef(null);
 
   function getSearchedTours() {
-      const searchInput = inpRef.current.value.toLowerCase();
-      const fullArr = tours
-      if (searchInput === '') {
-        setTours(fullArr);
-        console.log(fullArr, 'Tours - Empty inp');
-      } else {
-         const searchedTours = tours.filter(tour => tour.city.toLowerCase().includes(searchInput));
-         setTours(searchedTours);
-         console.log(searchedTours, 'Tours - Not empty inp');
+    const searchInput = inpRef.current.value.toLowerCase();
 
-       }
+    if (searchInput === "") {
+      setTours(data);
+    } else {
+      const searchedTours = data.filter((tour) =>
+        tour.city.toLowerCase().includes(searchInput)
+      );
+      setTours(searchedTours);
+    }
+  }
+
+  function getFilteredByContinentTours() {
+    const continentsOption = optionsOfContinents.current.value.toUpperCase();
+    console.log(continentsOption);
+    //   if (searchInput === "") {
+    //     setTours(data);
+    //   } else {
+    //     const searchedTours = data.filter((tour) =>
+    //       tour.city.toLowerCase().includes(searchInput)
+    //     );
+    //     setTours(searchedTours);
+    //   }
+  }
+
+  getFilteredByContinentTours();
+
+  function getUniqueValues(data, value) {
+    const uniqueValue = data.map((obj) => obj[value]);
+    const uniqueArr = [...new Set(uniqueValue)];
+    return uniqueArr;
   }
 
   return (
     <>
       <section className="hero-tours">
         <div className="container hero-tours__container">
-          <input ref={inpRef} type="text" placeholder="type your favourite city..." onChange={getSearchedTours}/>
+          <input
+            ref={inpRef}
+            type="text"
+            placeholder="type your favourite city..."
+            onKeyUp={getSearchedTours}
+          />
+          <select>
+            {getUniqueValues(data, "continent").map((continent) => (
+              <option ref={optionsOfContinents} value={continent}>
+                {continent}
+              </option>
+            ))}
+          </select>
         </div>
       </section>
       <section className="tours">
         <div className="container tours__container">
-          {tours.map(tour => (
+          {tours.map((tour) => (
             <Tour key={tour.id} tour={tour} setTours={setTours} tours={tours} />
           ))}
         </div>
