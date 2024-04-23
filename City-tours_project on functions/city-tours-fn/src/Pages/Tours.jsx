@@ -11,17 +11,19 @@ export default function Tours({ tours, setTours }) {
 
   const inpRef = useRef(null)
 
-  function showMessage() {
-    const searchInput = inpRef.current.value.toLowerCase()
-    const searchedTours = tours.filter(tour => searchInput == tour.city)
-    setTours(searchedTours)
+  function getSearchedTours() {
+      const searchInput = inpRef.current.value.toLowerCase();
+      const searchedTours = tours.filter(tour => tour.city.toLowerCase() === searchInput);
+      setTours(searchedTours);
+      console.log(searchedTours);
   }
 
   return (
     <>
       <section className="hero-tours">
         <div className="container hero-tours__container">
-          <input ref={inpRef} type="text" placeholder="type your favourite city..." onChange={showMessage}/>
+          <input ref={inpRef} type="text" placeholder="type your favourite city..."/>
+          <button onClick={getSearchedTours}>Поиск</button>
         </div>
       </section>
       <section className="tours">
