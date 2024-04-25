@@ -14,17 +14,27 @@ export default function Tours() {
 
   const [cart, setCart] = useState([]);
 
+  function setToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }
+
   const inpRef = useRef(null);
   const optionsOfContinents = useRef(null);
-
+  
   const addToCart = (name, price) => {
-    setCart(prevCart => [...prevCart, { name, price }]);
+    setCart((prevCart) => [...prevCart, { name, price }]);
+    setToLocalStorage()
   };
-  console.log(cart);
+  
+  function showAllCards() {
+    const all = data.map(item => item)
+    setTours(all)
+    inpRef.current.value = ''
+  }
   
   function getSearchedTours() {
     const searchInput = inpRef.current.value.toLowerCase();
-
+    
     if (searchInput === "") {
       setTours(data);
     } else {
@@ -37,9 +47,10 @@ export default function Tours() {
 
   const getFilteredByContinentTours = () => {
     const value = optionsOfContinents.current.value;
-    const array = data.filter(item => item.continent === value)
-    setTours(array)
-  }
+    const array = data.filter((item) => item.continent === value);
+    setTours(array);
+    inpRef.current.value = ''
+  };
 
   function getUniqueValues(data, value) {
     const uniqueValue = data.map((obj) => obj[value]);
@@ -57,7 +68,7 @@ export default function Tours() {
             placeholder="type your favourite city..."
             onKeyUp={getSearchedTours}
           />
-          <select ref={optionsOfContinents} >
+          <select ref={optionsOfContinents}>
             {getUniqueValues(data, "continent").map((continent) => (
               <option key={continent} value={continent}>
                 {continent}
@@ -65,12 +76,19 @@ export default function Tours() {
             ))}
           </select>
           <button onClick={getFilteredByContinentTours}>Filter</button>
+          <button onClick={showAllCards}>Show All</button>
         </div>
       </section>
       <section className="tours">
         <div className="container tours__container">
           {tours.map((tour) => (
-            <Tour key={tour.id} tour={tour} setTours={setTours} tours={tours} addToCart={addToCart}/>
+            <Tour
+              key={tour.id}
+              tour={tour}
+              setTours={setTours}
+              tours={tours}
+              addToCart={addToCart}
+            />
           ))}
         </div>
       </section>
