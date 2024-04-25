@@ -1,25 +1,46 @@
 //React hooks
 import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Keyboard,
+  } from "swiper/modules";
 
 //Components
-import {tourData} from '../../data/tourData'
+import { tourData } from "../../data/tourData";
 
 //Styles
 import "./Slider.scss";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function Slider() {
-  
   return (
     <>
       <Swiper
+        cssMode={true}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="swiper"
         spaceBetween={50}
-        slidesPerView={3}
+        slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {tourData.map(item => 
-          <SwiperSlide><img src={item.img} alt={item.city} /></SwiperSlide>)}
+        {tourData.map((item) => (
+          <SwiperSlide className="swiper__item">
+            <h2 className="swiper__item_title">{item.city}</h2>
+            <img className="swiper__item_img" src={item.img} alt={item.city} />
+          </SwiperSlide>
+
+        ))}
       </Swiper>
       <div className="hero-content">
         <h1 className="hero-content__title">
