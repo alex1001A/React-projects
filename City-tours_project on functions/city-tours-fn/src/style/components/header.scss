@@ -1,14 +1,13 @@
 .header {
 
     background-color: var(--add-dark-blue);
-    margin-bottom: 40px;
 
     &__container {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .cart {
+        .cart-icon {
             width: 50px;
             height: 50px;
             background-color: var(--add-light-blue);
