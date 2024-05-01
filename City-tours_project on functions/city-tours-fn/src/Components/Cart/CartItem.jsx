@@ -1,4 +1,4 @@
-export default function CartItem({item}) {
+export default function CartItem({item}) {   //(item, index)
   return (
     <div className="cart__item">
       <div className="cart__item_buttons">

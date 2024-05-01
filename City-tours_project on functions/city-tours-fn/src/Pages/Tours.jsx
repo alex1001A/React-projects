@@ -12,7 +12,8 @@ export default function Tours() {
   const [data] = useState(tourData);
   const [tours, setTours] = useState(data);
 
-  const [cart, setCart] = useState([]);
+  const currentCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+  const [cart, setCart] = useState(currentCart);
 
   function setToLocalStorage() {
     localStorage.setItem('cart', JSON.stringify(cart))
