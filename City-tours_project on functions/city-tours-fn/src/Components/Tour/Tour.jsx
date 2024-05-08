@@ -3,7 +3,7 @@ import "../../style/components/tour-card.scss";
 
 export default function Tour({ tour, addToCart }) {
 
-  const { name, price } = tour;
+  const { id, name, price, img } = tour;
 
   return (
     <div className="tour-card">
@@ -14,7 +14,7 @@ export default function Tour({ tour, addToCart }) {
         <p className="tour-card__country">
           Country:{" "}
           <span>
-            <b>{tour.country}</b>
+            <b>{tour.country}</b> 
           </span>
         </p>
         <p className="tour-card__continent">
@@ -24,7 +24,7 @@ export default function Tour({ tour, addToCart }) {
           </span>
         </p>
         <p className="tour-card__price">Price: {tour.price} $</p>
-        <button onClick={() => addToCart(name, price)}>Add to cart</button>
+        <button onClick={() => addToCart(id, name, price, img)}>Add to cart</button>
       </div>
     </div>
   );

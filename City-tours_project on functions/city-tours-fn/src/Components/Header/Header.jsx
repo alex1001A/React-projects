@@ -1,5 +1,6 @@
 // React hooks
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 
 // Components
 import logo from "../../img/logo.jpg";
@@ -20,14 +21,16 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container header__container">
-        <img className="header__logo" src={logo} alt="logo" />
+        <Link className="nav-list__link" to="/">
+          <img className="header__logo" src={logo} alt="logo" />
+        </Link>
         <Nav />
         <div className="cart-icon" onClick={toggleCart}>
           <i className="fa-solid fa-cart-shopping cart-icon__icon">
             <span className="cart-icon__count">{cartCount}</span>
           </i>
         </div>
-        {showCart && <Cart />} {/* Условный рендеринг корзины */}
+        {showCart && <Cart toggleCart={toggleCart}/>} {/* Условный рендеринг корзины */}
       </div>
     </header>
   );
