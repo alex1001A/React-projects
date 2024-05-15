@@ -1,0 +1,48 @@
+body {
+    background-color: #E56B69; 
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    position: relative;
+    background-color: #E5A24B;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    &__title {
+        font-weight: 400;
+    }
+
+    .open-modal-btn {
+        outline: none;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 40px;
+        width: 90px;
+        height: 90px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+
+        &:hover {
+            color: white;
+            background-color: slateblue;
+            font-weight: 200;
+            border: none;
+        }
+    }
+}
+
+.container {
+    padding: 50px;
+    margin: 0 auto;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    gap: 20px;
+
+    .open-modal-btn {
+        position: absolute;
+    }
+}

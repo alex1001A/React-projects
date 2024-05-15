@@ -1,17 +1,55 @@
-export default function CartItem({ item }) {   //(item, index)
+import { useState, useEffect } from "react";
+
+
+export default function CartItem({ item, removeFromCart, updateTotalPrice }) {
+
+  const { id, name, price, img } = item;
+  
+  const [qty, setQty] = useState(0)
+
+  useEffect(() => {
+    const savedQty = localStorage.getItem(`cart-${id}`);
+    if (savedQty) {
+      setQty(parseInt(savedQty));
+    }
+  }, [id]);
+
+  const plusQty = () => {
+    setQty((prevQty) => {
+      const newQty = prevQty + 1;
+      localStorage.setItem(`cart-${id}`, newQty);
+      return newQty;
+    });
+  };
+
+  const minusQty = () => {
+    if (qty === 0) {
+      return;
+    }
+    setQty((prevQty) => {
+      const newQty = prevQty - 1;
+      localStorage.setItem(`cart-${id}`, newQty);
+      return newQty;
+    });
+  };
+  
+  const handleRemoveClick = () => {
+    removeFromCart(id);
+  };
+
   return (
     <div className="cart__item">
-      <button className="cart__item_button-remove">
+      <button onClick={handleRemoveClick} className="cart__item_button-remove">
         <i className="fa-solid fa-xmark"></i>
       </button>
-      <img className="cart__item_image" src={item.img} />
-      <p className="cart__item_title">{item.name}</p>
+      <img className="cart__item_image" src={img} />
+      <p className="cart__item_title">{name}</p>
       <div className="cart__item_quantity-block">
-        <button className="cart__item_plus-btn">+</button>
-        <span className="cart__item_quantity">0</span>
-        <button className="cart__item_minus-btn">-</button>
+        <button onClick={() => plusQty()} className="cart__item_plus-btn">+</button>
+        <span className="cart__item_quantity">{qty}</span>
+        <button onClick={() => minusQty()} className="cart__item_minus-btn">-</button>
       </div>
-      <p className="cart__item_summary">{item.price}$</p>
+      <p className="cart__item_summary">{price * qty}$</p>
     </div>
   );
 }

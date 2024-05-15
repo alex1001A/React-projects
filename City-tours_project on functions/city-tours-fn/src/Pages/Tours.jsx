@@ -15,41 +15,34 @@ export default function Tours() {
   const currentCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
   const [cart, setCart] = useState(currentCart);
 
-  function setToLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart))
+  function setToLocalStorage(updatedCart) {
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
+
+  const addToCart = (id, name, price, img) => {
+    const isTourExists = cart.some((item) => item.id === id);
+  
+    if (isTourExists) {
+      console.log('Тур с таким id уже есть в корзине');
+      return;
+    }
+  
+    setCart((prevCart) => [...prevCart, { id, name, price, img, quantity: 1 }]);
+    setToLocalStorage([...cart, { id, name, price, img, quantity: 1 }]);
+  };
 
   const inpRef = useRef(null);
   const optionsOfContinents = useRef(null);
-  
-  // const addToCart = (id, name, price, img) => {
-  //   setCart((prevCart) => [...prevCart, { id, name, price, img }]);
-  //   setToLocalStorage()
-  // };
 
-  const addToCart = (id, name, price, img) => {
-    // Проверяем, есть ли тур с таким же id в корзине
-    const isTourExists = cart.some(item => item.id === id);
-
-    if (!isTourExists) {
-        // Если тура с таким id еще нет в корзине, добавляем его
-        setCart(prevCart => [...prevCart, { id, name, price, img, quantity: 1 }]);
-        setToLocalStorage();
-    } else {
-        // Если тур с таким id уже есть в корзине, ничего не делаем
-        console.log('Тур с таким id уже есть в корзине');
-    }
-};
-  
   function showAllCards() {
     const all = data.map(item => item)
     setTours(all)
     inpRef.current.value = ''
   }
-  
+
   function getSearchedTours() {
     const searchInput = inpRef.current.value.toLowerCase();
-    
+
     if (searchInput === "") {
       setTours(data);
     } else {

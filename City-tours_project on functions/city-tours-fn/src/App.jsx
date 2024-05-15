@@ -11,7 +11,6 @@ import Tours from "./Pages/Tours";
 
 export default function App() {
 
-
   return (
     <div className="wrapper">
       <Header />

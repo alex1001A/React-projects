@@ -1,0 +1,43 @@
+.product {
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    max-height: 500px;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+
+    img {
+        width: 100%;
+        max-width: 200px;
+        object-fit: cover;
+    }
+
+    &__item {
+        font-style: italic;
+    }
+
+    &__info {
+        font-weight: 600;
+        display: block;
+    }
+
+    .delete-btn {
+        outline: none;
+        background-color: seagreen;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        width: 90px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+
+        &:hover {
+            color: black;
+            background-color: ivory;
+        }
+    }
+}
