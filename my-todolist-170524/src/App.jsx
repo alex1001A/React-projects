@@ -1,38 +1,53 @@
 import './App.css';
-// import InputField from './components/InputField';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
-  const [value, setValue] = useState('');
 
-  // useEffect(() => {
-  //   console.log(tasks);
-  // }, [tasks]);
+  const [value, setValue] = useState('')
+  const [tasks, setTasks] = useState([])
+  const [count, setCount] = useState(20)
 
-  function addTaskToTaskQueue() {
-    const newTask = { title: value };
-    setTasks(prevTasks => [...prevTasks, newTask]);
-    setValue(''); // Сбросить значение инпута после добавления задачи
-    console.log(newTask);
-    console.log(tasks);
+  function onClick() {
+    setCount(prev => prev - 1)
+    setCount(prev => prev + 2)
   }
+  
+
+  function setToLocalStorsge() {
+    const task = {
+      title: value
+    }
+
+    setTasks(prevTasks => {
+      const newTasks = [...prevTasks, task]
+      localStorage.setItem('tasksArr', JSON.stringify(tasks))
+      return newTasks
+    })
+    
+    
+    
+    setValue('')
+  }
+  
+  // console.log(tasks);
 
   return (
-    <div className='Wrapper'>
-      <label htmlFor='task'>Type your task </label>
+    <div className='wrapper'>
+      <h1 onClick={onClick}>{count}</h1>
+      <label htmlFor="inp">Type your task</label>
       <input
         value={value}
-        id='task'
+        id='inp'
         type="text"
         onChange={e => setValue(e.target.value)}
       />
-      <button onClick={addTaskToTaskQueue}>Add to Tasks</button>
-      <ul>
+      <button onClick={setToLocalStorsge}>Add task</button>
+      <ul className='list'>
         {tasks.map((item, index) => (
-          <li key={index}>{item.title}</li>
-        ))}
+          <li className='list__item' key={index + 1}>{item.title}</li>
+        ))
+        }
       </ul>
     </div>
   );
