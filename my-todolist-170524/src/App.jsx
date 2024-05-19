@@ -1,64 +1,54 @@
 import './App.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //'https://jsonplaceholder.typicode.com/users'
 
 export default function App() {
 
   const [value, setValue] = useState('')
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || [])
 
-  const addNewTask = () => {
-    const task = {
-      title: value
-    }
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
+  
+  function addTask() {
 
-    setTasks(prevTasks => {
-      const newTasks = [...prevTasks, task]
-      return newTasks
-    })
+    if (value === '') return;
+
+    const task = {title: value}
+
+    setTasks(prevTasks => [...prevTasks, task])
 
     setValue('')
   }
 
-function buttonRemove(index) {
-  setTasks(prevTasks => prevTasks.filter((_, i) => i !== index))
-}
+  function removeTask(index) {
+    setTasks(prevTasks => prevTasks.filter((_, i) => i !== index))
+  }
 
-const editTaskBtn = (index) => {
-  if (value.trim() === '') return; // Предотвращаем изменение на пустое значение
-
-  setTasks(prevTasks =>
-    prevTasks.map((obj, i) =>
-      i === index ? { ...obj, title: value } : obj
-    )
-  );
-
-  setValue('')
-};
-
-function removeAllTasks() {
-  setTasks([])
-}
+  function removeAllTasks() {
+    setTasks([]);
+  }
 
   return (
-    <div>
+    <div className='wrapper'>
       <input
-       type='text'
-       value={value}
-       onChange={e => setValue(e.target.value)}
+        type='text'
+        value={value}
+        onChange={e => setValue(e.target.value)}
       />
-      <button onClick={addNewTask}>Add</button>
+      <button onClick={addTask}>Add</button>
       <button onClick={removeAllTasks}>Remove all tasks</button>
-      <ul>
+      <ul className='list'>
         {
           tasks.map((item, index) => (
             <li key={index}>
+              {index + 1}.
               {item.title}
-              <button onClick={() => editTaskBtn(index)}>Edit</button>
-              <button onClick={() => buttonRemove(index)}>X</button>
-              </li>
+              <button onClick={() => removeTask(index)}>Remove task</button>
+            </li>
           ))
         }
       </ul>
