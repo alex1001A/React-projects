@@ -8,6 +8,7 @@ import Header from "./Components/Header/Header";
 //Pages
 import Home from "./Pages/Home";
 import Tours from "./Pages/Tours";
+import About from "./Pages/About";
 
 export default function App() {
 
@@ -17,7 +18,7 @@ export default function App() {
       <main className="main">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/about" element={<h1>About</h1>} />
+          <Route path="/about" element={<About/>} />
           <Route path="/tours" element={<Tours />} />
         </Routes>
 

@@ -1,5 +1,5 @@
 //React components/hooks
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //Component
 import Tour from "../Components/Tour/Tour";
@@ -9,15 +9,15 @@ import { tourData } from "../data/tourData";
 import "../style/pages/tours-page.scss";
 
 export default function Tours() {
-  const [data] = useState(tourData);
+  const [data, setData] = useState(tourData);
   const [tours, setTours] = useState(data);
 
-  const currentCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+  const currentCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
   const [cart, setCart] = useState(currentCart);
 
-  function setToLocalStorage(updatedCart) {
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-  }
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (id, name, price, img) => {
     const isTourExists = cart.some((item) => item.id === id);
@@ -28,16 +28,14 @@ export default function Tours() {
     }
   
     setCart((prevCart) => [...prevCart, { id, name, price, img, quantity: 1 }]);
-    setToLocalStorage([...cart, { id, name, price, img, quantity: 1 }]);
   };
 
   const inpRef = useRef(null);
   const optionsOfContinents = useRef(null);
 
   function showAllCards() {
-    const all = data.map(item => item)
-    setTours(all)
-    inpRef.current.value = ''
+    setTours(data);
+    inpRef.current.value = '';
   }
 
   function getSearchedTours() {
@@ -57,7 +55,7 @@ export default function Tours() {
     const value = optionsOfContinents.current.value;
     const array = data.filter((item) => item.continent === value);
     setTours(array);
-    inpRef.current.value = ''
+    inpRef.current.value = '';
   };
 
   function getUniqueValues(data, value) {

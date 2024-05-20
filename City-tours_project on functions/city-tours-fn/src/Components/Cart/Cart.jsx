@@ -1,15 +1,24 @@
 import CartItem from "./CartItem";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Cart({ toggleCart }) {
-
+  const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+    updateTotalPrice(storedCart);
+  }, []);
+
+  useEffect(() => {
+    updateTotalPrice(cart);
+  }, [cart]);
 
   const removeFromCart = (id) => {
     const updatedCart = cart.filter(item => item.id !== id);
+    setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
@@ -17,7 +26,6 @@ export default function Cart({ toggleCart }) {
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     setTotalPrice(total);
   };
-
 
   return (
     <div className="cart">
