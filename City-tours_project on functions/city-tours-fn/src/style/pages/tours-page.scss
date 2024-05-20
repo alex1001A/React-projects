@@ -8,9 +8,28 @@
   &__container {
     display: flex;
     justify-content: space-between;
+    flex-grow: 1;
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+    .button {
+      background-color: rgb(56, 199, 180);;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+    }
   }
 
-  &__search-input {
+  .form-control {
     width: 100%;
     max-width: 300px;
     height: 30px;
@@ -25,9 +44,14 @@
 }
 
 .tours {
+  margin-bottom: 100px;
+
   &__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    min-height: 100vh;
   }
+
+
 }

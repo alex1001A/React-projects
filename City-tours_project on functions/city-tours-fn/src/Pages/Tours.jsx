@@ -21,12 +21,12 @@ export default function Tours() {
 
   const addToCart = (id, name, price, img) => {
     const isTourExists = cart.some((item) => item.id === id);
-  
+
     if (isTourExists) {
       console.log('Тур с таким id уже есть в корзине');
       return;
     }
-  
+
     setCart((prevCart) => [...prevCart, { id, name, price, img, quantity: 1 }]);
   };
 
@@ -69,20 +69,24 @@ export default function Tours() {
       <section className="hero-tours">
         <div className="container hero-tours__container">
           <input
+            class="form-control"
             ref={inpRef}
             type="text"
             placeholder="type your favourite city..."
             onKeyUp={getSearchedTours}
           />
-          <select ref={optionsOfContinents}>
-            {getUniqueValues(data, "continent").map((continent) => (
-              <option key={continent} value={continent}>
-                {continent}
-              </option>
-            ))}
-          </select>
-          <button onClick={getFilteredByContinentTours}>Filter</button>
-          <button onClick={showAllCards}>Show All</button>
+          <div className="filter-container">
+            <span>Sort by continents...</span>
+            <select ref={optionsOfContinents}>
+              {getUniqueValues(data, "continent").map((continent) => (
+                <option key={continent} value={continent}>
+                  {continent}
+                </option>
+              ))}
+            </select>
+            <button className="button" onClick={getFilteredByContinentTours}>Filter</button>
+          </div>
+          <button className="button" onClick={showAllCards}>Show All</button>
         </div>
       </section>
       <section className="tours">

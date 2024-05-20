@@ -5,14 +5,14 @@ export default function CartItem({ item, removeFromCart, updateTotalPrice }) {
 
   const { id, name, price, img } = item;
   
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
 
-  useEffect(() => {
-    const savedQty = localStorage.getItem(`cart-${id}`);
-    if (savedQty) {
-      setQty(parseInt(savedQty));
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   const savedQty = localStorage.getItem(`cart-${id}`);
+  //   if (savedQty) {
+  //     setQty(parseInt(savedQty));
+  //   }
+  // }, [id]);
 
   const plusQty = () => {
     setQty((prevQty) => {

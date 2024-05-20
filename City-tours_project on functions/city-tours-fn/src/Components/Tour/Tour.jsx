@@ -24,7 +24,7 @@ export default function Tour({ tour, addToCart }) {
           </span>
         </p>
         <p className="tour-card__price">Price: {price} $</p>
-        <button onClick={() => addToCart(id, name, price, img)}>Add to cart</button>
+        <button className="button" onClick={() => addToCart(id, name, price, img)}>Add to cart</button>
       </div>
     </div>
   );

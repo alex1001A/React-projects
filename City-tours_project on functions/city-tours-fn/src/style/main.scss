@@ -3,7 +3,7 @@
 @import './global/global.scss';
 
 // Pages
-// @import './pages/tours-page.scss';
+@import './pages/tours-page.scss';
 @import './pages/about-page.scss';
 
 
@@ -14,3 +14,4 @@
 //Components
 @import './components/cart.scss';
 @import './components/cart-item.scss';
+@import './components/footer.scss'

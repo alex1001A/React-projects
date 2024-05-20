@@ -81,4 +81,54 @@
     margin:40px auto;
     width:80%
  }
+
+ .about-tours-section {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .about-tours {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+
+ .about-tours-section h1 {
+   text-align:center;
+   color:#1EADFF;
+ }
+
+ .about-tours-section h1 hr {
+   width:15%;
+   border-top:2px solid #000;
+   background-color:transperant;
+   border-bottom:none;
+   margin-bottom:50px;
+   margin: 0 auto;
+ }
  
+ .some-card {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   align-items: center;
+   width: 100%;
+   max-width: 400px;
+   padding: 20px;
+   position:relative;
+   min-width:20%;
+   height:500px !important;
+   height:auto;
+   background-color:#fff;
+   margin:40px 6.5%;
+   box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+   text-align:center;
+   overflow: hidden;
+ }
+
+ .some-card img {
+   width: 200px;
+   height: 200px;
+   margin: 0 auto;
+   object-fit: cover;
+ }

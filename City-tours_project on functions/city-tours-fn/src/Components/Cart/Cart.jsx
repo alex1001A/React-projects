@@ -37,8 +37,9 @@ export default function Cart({ toggleCart }) {
         {cart.map((item) => (                         
           <CartItem key={item.id} item={item} removeFromCart={removeFromCart}/>))}
         <div className="cart__summary-block">
-          <p className="cart__summary-block_title">Total:</p>
-          <p className="cart__summary-block_subtitle">{totalPrice}$</p>
+          <p className="cart__summary-block_title">
+            Total price: <span className="cart__summary-block_subtitle">{totalPrice}$</span> 
+            </p>
         </div>
       </div>
     </div>

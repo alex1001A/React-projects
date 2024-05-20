@@ -4,6 +4,7 @@
   border-radius: 20px;
   background-color: var(--add-grey);
   max-width: 500px;
+  max-height: 500px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,6 +13,7 @@
   &__img {
     height: 300px;
     border-radius: 20px 20px 0 0;
+    object-fit: cover;
   }
 
   &__content {
@@ -35,6 +37,18 @@
     }
 
     &_description {
+    }
+
+    .button {
+      background-color: rgb(56, 199, 180);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(0.9);
+      }
     }
   }
 

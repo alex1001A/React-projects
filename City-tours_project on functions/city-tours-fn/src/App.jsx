@@ -9,6 +9,7 @@ import Header from "./Components/Header/Header";
 import Home from "./Pages/Home";
 import Tours from "./Pages/Tours";
 import About from "./Pages/About";
+import Footer from "./Components/Footer/Footer";
 
 export default function App() {
 
@@ -24,7 +25,7 @@ export default function App() {
 
       </main>
 
-      <footer></footer>
+      <Footer/>
     </div>
   );
 }
